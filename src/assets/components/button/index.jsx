@@ -1,4 +1,4 @@
-
+import style from "./button.module.css"
 
 export function Button(props){
     
@@ -6,7 +6,7 @@ export function Button(props){
 
     return(
         <>
-            <button onClick={()=>{props.NumberLessOrPlus(lessOrPlus)}}>
+            <button onClick={()=>{props.NumberLessOrPlus(lessOrPlus)}} className={style.button}>
                 {props.action}
             </button>
         </>

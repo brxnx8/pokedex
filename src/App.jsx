@@ -12,7 +12,7 @@ function App() {
         const pokemonData = await data.json();
         setPokemon({
             "id": pokemonData.id,
-            "name": pokemonData.name.toUpperCase(),
+            "name": pokemonData.name,
             "image": pokemonData["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
         });
     };
@@ -37,11 +37,13 @@ function App() {
 
     return (
         <div className="main">
-            <img src={pokemon.image} alt=""/>
-            <img src={Pokedex} alt="pokedex" />
-            <p>{pokemon.name}</p>
-            <Button action="Previous" NumberLessOrPlus={NumberLessOrPlus}/>
-            <Button action="Next" NumberLessOrPlus={NumberLessOrPlus}/>
+            <img src={pokemon.image} alt="" className="poke-image"/>
+            <img src={Pokedex} alt="pokedex" className="pokedex"/>
+            <h1 className="poke-name"><span>{pokemon.id} - </span>{pokemon.name}</h1>
+            <div className="buttons">
+                <Button action="Previous" NumberLessOrPlus={NumberLessOrPlus}/>
+                <Button action="Next" NumberLessOrPlus={NumberLessOrPlus}/>
+            </div>
         </div>
     );
 }

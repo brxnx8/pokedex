@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace;
+}
+
+body{
+    text-align: center;
+    min-height: 100vh;
+}
+.main{
+    display: inline-block;
+    padding: 10px;
+
+    position: relative;
+
+    
+}
+.pokedex{
+    width: 100%;
+    max-width: 425px;
+}
+.poke-image{
+    position: absolute;
+    z-index: 2;
+
+    bottom: 55%;
+    left: 40%;
+
+    height: 12%;
+}
+.poke-name{
+    position: absolute;
+    z-index: 2;
+
+    top: 55%;
+    right: 25%;
+
+    font-weight: 600;
+
+    color: #3a444d;
+
+    text-transform: capitalize;
+
+    font-size: clamp(8px, 7vw, 26px);
+}
+.poke-name > span{
+    color: #aaa;
+}
+.buttons{
+    display: flex;
+    gap: 15px;
+
+    width: 65%;
+    position: absolute;
+
+    bottom: 10%;
+    left: 15%;
+}
