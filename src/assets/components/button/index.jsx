@@ -2,7 +2,7 @@ import style from "./button.module.css"
 
 export function Button(props){
     
-    let lessOrPlus = (props.action==="Next"?true:false);
+    let lessOrPlus = (props.action==="Next >"?true:false);
 
     return(
         <>

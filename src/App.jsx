@@ -10,6 +10,7 @@ function App() {
     const loadPokemon = async (number) => {
         const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`);
         const pokemonData = await data.json();
+        console.log(pokemonData)
         setPokemon({
             "id": pokemonData.id,
             "name": pokemonData.name,
@@ -20,9 +21,9 @@ function App() {
     useEffect(
         ()=>{
             loadPokemon(number);
-        }
+        }, [number]
     );
-
+    
     function NumberLessOrPlus (bool) {
         if(bool){
             setNumber((state) => {
@@ -41,8 +42,8 @@ function App() {
             <img src={Pokedex} alt="pokedex" className="pokedex"/>
             <h1 className="poke-name"><span>{pokemon.id} - </span>{pokemon.name}</h1>
             <div className="buttons">
-                <Button action="Previous" NumberLessOrPlus={NumberLessOrPlus}/>
-                <Button action="Next" NumberLessOrPlus={NumberLessOrPlus}/>
+                <Button action="< Prev" NumberLessOrPlus={NumberLessOrPlus}/>
+                <Button action="Next >" NumberLessOrPlus={NumberLessOrPlus}/>
             </div>
         </div>
     );
