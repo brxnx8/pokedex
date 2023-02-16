@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button } from "./assets/components/button";
 import Pokedex from "./assets/images/pokedex.png";
+import Load from "./assets/images/load.gif";
+import { CardInfo } from "./assets/components/cardinformations";
 
 function App() {
     const [number, setNumber] = useState(1);
@@ -10,17 +12,22 @@ function App() {
     const loadPokemon = async (number) => {
         const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`);
         const pokemonData = await data.json();
-        console.log(pokemonData)
         setPokemon({
             "id": pokemonData.id,
             "name": pokemonData.name,
-            "image": pokemonData["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
+            "imageGif": pokemonData["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"],
+            "image3D": pokemonData["sprites"]["other"]["home"]["front_default"],
+            "imageCard": pokemonData["sprites"]["other"]["official-artwork"]["front_default"],
+            "stats": pokemonData.stats,
+            "types": pokemonData.types,
+            "weight": pokemonData.weight,
+            "height": pokemonData.height
         });
     };
-    
     useEffect(
         ()=>{
-            loadPokemon(number);
+            setPokemon({});
+            setTimeout(() => {  loadPokemon(number); }, 700);;
         }, [number]
     );
     
@@ -38,13 +45,22 @@ function App() {
 
     return (
         <div className="main">
-            <img src={pokemon.image} alt="" className="poke-image"/>
+            <img src={pokemon.imageGif?pokemon.imageGif:Load} alt="" className="poke-image"/>
             <img src={Pokedex} alt="pokedex" className="pokedex"/>
-            <h1 className="poke-name"><span>{pokemon.id} - </span>{pokemon.name}</h1>
+            <h1 className="poke-name"><span>{pokemon.id?pokemon.id:""} - </span>{pokemon.name?pokemon.name:"Loading.."}</h1>
             <div className="buttons">
-                <Button action="< Prev" NumberLessOrPlus={NumberLessOrPlus}/>
-                <Button action="Next >" NumberLessOrPlus={NumberLessOrPlus}/>
+                <Button 
+                    action="< Prev" 
+                    NumberLessOrPlus={NumberLessOrPlus}
+                />
+                <Button 
+                    action="Next >" 
+                    NumberLessOrPlus={NumberLessOrPlus}
+                />
             </div>
+            <CardInfo 
+                pokemon={pokemon} 
+            />
         </div>
     );
 }

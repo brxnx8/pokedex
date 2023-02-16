@@ -1,0 +1,21 @@
+.background{
+    background-color: rgba(0, 0, 0, 0.774);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+.card{
+    width: 100%;
+    margin: 1% auto;
+}
+.divColorCard{
+    background-color: red;
+    
+}
+.divColorCard > img{
+    width: 20%;
+}
