@@ -32,6 +32,8 @@ body{
     transform: translate(-63%, 20%);
 
     height: 18%;
+
+    cursor: pointer;
 }
 .poke-name{
     position: absolute;
@@ -47,6 +49,8 @@ body{
     text-transform: capitalize;
 
     font-size: clamp(12px, 10vw, 30px);
+
+    cursor: pointer;
 }
 .poke-name > span{
     color: #aaa;
@@ -60,4 +64,34 @@ body{
 
     bottom: 10%;
     left: 15%;
+}
+
+
+.backgroundNone{
+    background-color: rgba(0, 0, 0, 0.774);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+
+    padding-bottom: 2%;
+    
+    display: none;
+}
+.backgroundBlock{
+    background-color: rgba(0, 0, 0, 0.774);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+
+    padding-bottom: 2%;
+
+    display: block;
 }

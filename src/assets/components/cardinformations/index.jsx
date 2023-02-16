@@ -1,6 +1,6 @@
 import style from "./cardinformations.module.css";
 
-export function CardInfo({pokemon}) {
+export function CardInfo({pokemon, classCard, ToggleClassCard}) {
     const types = [];
     
     for(let obj in pokemon.types){
@@ -9,12 +9,12 @@ export function CardInfo({pokemon}) {
     }
 
     return (
-        <section className={style.background}>
+        <section className={classCard} onClick={ToggleClassCard}>
             <div className={style.card}>
                 <div className={style.divColorCard}>
                     <img src={pokemon.image3D} alt="" />
                 </div>
-                <div className={style.pokemoninInfo}>
+                <div className={style.pokemonInfo}>
                     <h1>{pokemon.name}</h1>
                     <section>
                         {types.map(
