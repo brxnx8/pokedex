@@ -7,22 +7,20 @@
 }
 .statsInfomations {
     display: flex;
-    justify-content: center;
-    gap: 50px;
-}
-.statsNames {
-    display: flex;
     flex-direction: column;
-    align-items: baseline;
-    gap: 8px;
 }
-.statsValues {
+.statsNames{
     display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: center;
 }
-.statsValues > div {
+.statsNames > p{
+    word-break: keep-all;
+    
+}
+.statsValues{
     display: flex;
     gap: 5px;
+    align-items: center;
 }
