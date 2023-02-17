@@ -16,14 +16,14 @@ export function CardInfo({ pokemon, classCard, ToggleClassCard }) {
                 </div>
                 <div className={style.pokemonInfo}>
                     <h1>{pokemon.name}</h1>
-                    <section>
+                    <section className={style.pokemonType}>
                         {types.map((type) => (
                             <div key={type}>{type}</div>
                         ))}
                     </section>
                     <section className={style.pokemonMeasure}>
-                        <div>{pokemon.weight}</div>
-                        <div>{pokemon.height}</div>
+                        <div>{pokemon.weight / 10 + "kg"}</div>
+                        <div>{pokemon.height / 10 + "m"}</div>
                     </section>
                     <Stats pokemon={pokemon} />
                 </div>

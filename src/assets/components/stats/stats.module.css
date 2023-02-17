@@ -1,26 +1,43 @@
 .statsConteiner {
     margin-top: 20px;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
+}
+.statsConteiner > h2 {
+    font-size: 40px;
 }
 .statsInfomations {
     display: flex;
     flex-direction: column;
+
+    width: 100%;
+    padding: 0 20px;
 }
-.statsNames{
+.statsNames {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 20px;
     align-items: center;
+
+    font-size: 25px;
+
+    width: 100%;
 }
-.statsNames > p{
+.statsNames > p {
     word-break: keep-all;
-    
 }
-.statsValues{
+.statsValues {
     display: flex;
     gap: 5px;
     align-items: center;
+}
+.statsValues > .input {
+    width: 200px;
+    height: 12px;
+
+    border: 0.5px solid gray;
 }
