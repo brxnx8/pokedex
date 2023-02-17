@@ -1,29 +1,27 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'VT323', monospace;
+    font-family: "VT323", monospace;
     box-sizing: border-box;
 }
 
-body{
+body {
     text-align: center;
     min-height: 100vh;
 
-    background: linear-gradient(to bottom, #6ab7f5, #fff)
+    background: linear-gradient(to bottom, #6ab7f5, #fff);
 }
-.main{
+.main {
     display: inline-block;
     padding: 10px;
 
     position: relative;
-
-    
 }
-.pokedex{
+.pokedex {
     width: 100%;
     max-width: 425px;
 }
-.poke-image{
+.poke-image {
     position: absolute;
     z-index: 2;
 
@@ -35,7 +33,10 @@ body{
 
     cursor: pointer;
 }
-.poke-name{
+.poke-image:hover {
+    height: 21%;
+}
+.poke-name {
     position: absolute;
     z-index: 2;
 
@@ -52,10 +53,13 @@ body{
 
     cursor: pointer;
 }
-.poke-name > span{
+.poke-name:hover {
+    font-size: clamp(15px, 11vw, 32px);
+}
+.poke-name > span {
     color: #aaa;
 }
-.buttons{
+.buttons {
     display: flex;
     gap: 15px;
 
@@ -66,8 +70,7 @@ body{
     left: 15%;
 }
 
-
-.backgroundNone{
+.backgroundNone {
     background-color: rgba(0, 0, 0, 0.774);
 
     position: fixed;
@@ -78,10 +81,10 @@ body{
     z-index: 5;
 
     padding-bottom: 2%;
-    
+
     display: none;
 }
-.backgroundBlock{
+.backgroundBlock {
     background-color: rgba(0, 0, 0, 0.774);
 
     position: fixed;

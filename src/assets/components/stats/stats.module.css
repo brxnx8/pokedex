@@ -1,0 +1,28 @@
+.statsConteiner {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.statsInfomations {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+.statsNames {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 8px;
+}
+.statsValues {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 8px;
+}
+.statsValues > div {
+    display: flex;
+    gap: 5px;
+}

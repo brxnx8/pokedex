@@ -1,14 +1,18 @@
-import style from "./button.module.css"
+import style from "./button.module.css";
 
-export function Button(props){
-    
-    let lessOrPlus = (props.action==="Next >"?true:false);
+export function Button(props) {
+    let lessOrPlus = props.action === "Next >" ? true : false;
 
-    return(
+    return (
         <>
-            <button onClick={()=>{props.NumberLessOrPlus(lessOrPlus)}} className={style.button}>
+            <button
+                onClick={() => {
+                    props.NumberLessOrPlus(lessOrPlus);
+                }}
+                className={style.button}
+            >
                 {props.action}
             </button>
         </>
-    )
+    );
 }
