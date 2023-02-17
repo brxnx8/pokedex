@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./assets/components/button";
 import Pokedex from "./assets/images/pokedex.png";
 import Load from "./assets/images/load.gif";
+import NotFound from "./assets/images/notFound.png";
 import { CardInfo } from "./assets/components/cardinformations";
 
 function App() {
@@ -11,29 +12,47 @@ function App() {
 
     const [classCard, setClassCard] = useState("backgroundNone");
 
+    const [valueSearch, setValueSearch] = useState("");
+
     const loadPokemon = async (number) => {
-        const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`);
-        const pokemonData = await data.json();
-        setPokemon({
-            id: pokemonData.id,
-            name: pokemonData.name,
-            imageGif:
-                pokemonData["sprites"]["versions"]["generation-v"][
-                    "black-white"
-                ]["animated"]["front_default"],
-            image3D: pokemonData["sprites"]["other"]["home"]["front_default"],
-            imageCard:
-                pokemonData["sprites"]["other"]["official-artwork"][
-                    "front_default"
-                ],
-            stats: pokemonData.stats,
-            types: pokemonData.types,
-            weight: pokemonData.weight,
-            height: pokemonData.height,
-        });
+        const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
+            .then((response) => response.json())
+            .then((pokemonData) => {
+                setPokemon({
+                    id: pokemonData.id,
+                    name: pokemonData.name,
+                    imageGif:
+                        pokemonData["sprites"]["versions"]["generation-v"][
+                            "black-white"
+                        ]["animated"]["front_default"],
+                    image3D:
+                        pokemonData["sprites"]["other"]["home"][
+                            "front_default"
+                        ],
+                    imageCard:
+                        pokemonData["sprites"]["other"]["official-artwork"][
+                            "front_default"
+                        ],
+                    stats: pokemonData.stats,
+                    types: pokemonData.types,
+                    weight: pokemonData.weight,
+                    height: pokemonData.height,
+                });
+            })
+            .catch((erro) => {
+                console.clear();
+                setPokemon({
+                    id: number,
+                    name: "Not Found",
+                    imageGif: NotFound,
+                });
+            });
     };
     useEffect(() => {
-        setPokemon({});
+        setPokemon({
+            imageGif: Load,
+            name: "Loading...",
+        });
         setTimeout(() => {
             loadPokemon(number);
         }, 700);
@@ -41,19 +60,20 @@ function App() {
 
     function NumberLessOrPlus(bool) {
         if (bool) {
-            setNumber((state) => {
-                return state < 649 ? state + 1 : state;
+            setNumber(() => {
+                return pokemon.id + 1;
             });
         } else {
-            setNumber((state) => {
-                return state > 1 ? state - 1 : state;
+            setNumber(() => {
+                return pokemon.id - 1;
             });
         }
+        setValueSearch("");
     }
 
     function ToggleClassCard(event) {
         if (
-            pokemon.image3D &&
+            pokemon.imageCard &&
             pokemon.name &&
             event.currentTarget === event.target
         ) {
@@ -65,10 +85,30 @@ function App() {
         }
     }
 
+    function ChangeNumber(event) {
+        setValueSearch(event.target.value);
+
+        if (event.target.value != "") {
+            setNumber(event.target.value);
+        } else if (!pokemon.name) {
+            setNumber(1);
+        }
+
+        if (parseInt(event.target.value) < 1) {
+            setNumber(1);
+        }
+    }
+
     return (
         <div className="main">
             <img
-                src={pokemon.imageGif ? pokemon.imageGif : Load}
+                src={
+                    pokemon.imageGif
+                        ? pokemon.imageGif
+                        : pokemon.image3D
+                        ? pokemon.image3D
+                        : pokemon.imageCard
+                }
                 alt=""
                 className="poke-image"
                 onClick={ToggleClassCard}
@@ -76,8 +116,17 @@ function App() {
             <img src={Pokedex} alt="pokedex" className="pokedex" />
             <h1 className="poke-name" onClick={ToggleClassCard}>
                 <span>{pokemon.id ? pokemon.id : ""} - </span>
-                {pokemon.name ? pokemon.name : "Loading.."}
+                {pokemon.name}
             </h1>
+            <div>
+                <input
+                    type="search"
+                    className="searchPokemon"
+                    placeholder="Name or Number..."
+                    onChange={ChangeNumber}
+                    value={valueSearch}
+                />
+            </div>
             <div className="buttons">
                 <Button action="< Prev" NumberLessOrPlus={NumberLessOrPlus} />
                 <Button action="Next >" NumberLessOrPlus={NumberLessOrPlus} />

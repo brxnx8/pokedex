@@ -16,7 +16,11 @@ export function Stats({ pokemon }) {
                         <div key={stat.stat.url} className={style.statsNames}>
                             <p>{stat.stat.name}</p>
                             <div className={style.statsValues}>
-                                <p>{stat.base_stat}</p>
+                                <p>
+                                    {stat.base_stat > 200
+                                        ? 200
+                                        : stat.base_stat}
+                                </p>
                                 <div className={style.input}>
                                     <div
                                         style={{
