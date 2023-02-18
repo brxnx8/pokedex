@@ -50,8 +50,7 @@ function App() {
     };
     useEffect(() => {
         setPokemon({
-            imageGif: Load,
-            name: "Loading...",
+            id: number,
         });
         setTimeout(() => {
             loadPokemon(number);
@@ -65,7 +64,7 @@ function App() {
             });
         } else {
             setNumber(() => {
-                return pokemon.id - 1;
+                return pokemon.id > 1 ? pokemon.id - 1 : pokemon.id;
             });
         }
         setValueSearch("");
@@ -109,6 +108,8 @@ function App() {
                         : pokemon.image3D
                         ? pokemon.image3D
                         : pokemon.imageCard
+                        ? pokemon.imageCard
+                        : Load
                 }
                 alt=""
                 className="poke-image"
@@ -116,8 +117,10 @@ function App() {
             />
             <img src={Pokedex} alt="pokedex" className="pokedex" />
             <h1 className="poke-name" onClick={ToggleClassCard}>
-                <span>{pokemon.id ? pokemon.id : ""} - </span>
-                {pokemon.name}
+                <span>
+                    {isNaN(pokemon.id) || !pokemon.name ? "" : pokemon.id} -{" "}
+                </span>
+                {pokemon.name ? pokemon.name : "Loading..."}
             </h1>
             <form onSubmit={ChangeNumber}>
                 <input

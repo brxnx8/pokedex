@@ -11,14 +11,19 @@ export function CardInfo({ pokemon, classCard, ToggleClassCard }) {
     return (
         <section className={classCard} onClick={ToggleClassCard}>
             <div className={style.card}>
-                <div className={style.divColorCard}>
+                <div className={`${style.divColorCard} ${style[types[0]]}`}>
                     <img src={pokemon.imageCard} alt="" />
                 </div>
                 <div className={style.pokemonInfo}>
                     <h1>{pokemon.name}</h1>
                     <section className={style.pokemonType}>
                         {types.map((type) => (
-                            <div key={type}>{type}</div>
+                            <div
+                                key={type}
+                                className={`${style.type} ${style[type]}`}
+                            >
+                                {type}
+                            </div>
                         ))}
                     </section>
                     <section className={style.pokemonMeasure}>
