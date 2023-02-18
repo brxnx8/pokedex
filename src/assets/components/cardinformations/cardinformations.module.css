@@ -149,4 +149,7 @@
     .pokemonType {
         font-size: clamp(20px, 5vw, 30px);
     }
+    .divColorCard > img{
+        height: 25vh;
+    }
 }
