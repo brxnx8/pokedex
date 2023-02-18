@@ -25,10 +25,7 @@ function App() {
                         pokemonData["sprites"]["versions"]["generation-v"][
                             "black-white"
                         ]["animated"]["front_default"],
-                    image3D:
-                        pokemonData["sprites"]["other"]["home"][
-                            "front_default"
-                        ],
+                    imageDefault: pokemonData["sprites"]["front_default"],
                     imageCard:
                         pokemonData["sprites"]["other"]["official-artwork"][
                             "front_default"
@@ -105,8 +102,8 @@ function App() {
                 src={
                     pokemon.imageGif
                         ? pokemon.imageGif
-                        : pokemon.image3D
-                        ? pokemon.image3D
+                        : pokemon.imageDefault
+                        ? pokemon.imageDefault
                         : pokemon.imageCard
                         ? pokemon.imageCard
                         : Load
