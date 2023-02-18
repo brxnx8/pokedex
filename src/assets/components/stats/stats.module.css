@@ -44,16 +44,16 @@
 }
 
 @media (max-width: 749px) {
-    .statsConteiner > h2{
+    .statsConteiner > h2 {
         font-size: clamp(30px, 5vw, 30px);
     }
-    .statsNames{
+    .statsNames {
         font-size: 20px;
     }
 }
-@media (max-width: 543px){
-    .statsNames{
+@media (max-width: 519px) {
+    .statsNames {
         flex-direction: column;
         gap: 5px;
     }
-} 
+}
