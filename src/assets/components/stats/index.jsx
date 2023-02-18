@@ -24,10 +24,15 @@ export function Stats({ pokemon }) {
                                 <div className={style.input}>
                                     <div
                                         style={{
-                                            width: `${stat.base_stat}px`,
-                                            height: "100%",
+                                            width: `${
+                                                stat.base_stat > 200
+                                                    ? 200
+                                                    : stat.base_stat
+                                            }px`,
+                                            height: "85%",
                                             backgroundColor: "#fff",
                                             border: "none",
+                                            boxShadow: "1.5px 1.5px #707070",
                                         }}
                                     ></div>
                                 </div>

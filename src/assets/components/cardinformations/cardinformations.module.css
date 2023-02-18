@@ -10,10 +10,8 @@
 .divColorCard {
     background-color: #fff;
 
-    border-radius: 10px;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
-    border-right: 0.6px solid rgb(194, 194, 194);
+    border-radius: 10px 15px 15px 10px;
+    border: 0.6px solid rgb(194, 194, 194);
     box-shadow: -0.6px -0.6px rgb(194, 194, 194);
 
     display: flex;
@@ -36,12 +34,9 @@
 
     flex-grow: 0.7;
 
-    box-sizing: border-box;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 0 10px 10px 0;
 
-    padding: 10px 15px 10px 0;
-    padding-left: 40px;
+    padding: 10px 15px 10px 40px;
 
     display: flex;
     flex-direction: column;
@@ -124,4 +119,31 @@
 }
 .steel {
     background-color: #b8b8d0;
+}
+
+@media (max-width: 749px) {
+    .card {
+        flex-direction: column;
+
+        height: 90%;
+        width: 80%;
+    }
+    .divColorCard {
+        margin: 0 0 -15px 0;
+
+        border-radius: 10px 10px 15px 15px;
+        box-shadow: 0.6px -0.8px rgb(194, 194, 194);
+    }
+    .pokemonInfo {
+        border-radius: 0 0 10px 10px;
+
+        padding: 10px 0 10px 0;
+    }
+    .pokemonInfo > h1 {
+        font-size: clamp(30px, 10vw, 40px);
+    }
+    .pokemonMeasure,
+    .pokemonType {
+        font-size: clamp(20px, 5vw, 30px);
+    }
 }

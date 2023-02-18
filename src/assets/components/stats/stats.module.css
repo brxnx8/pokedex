@@ -42,3 +42,18 @@
 
     border: 0.5px solid gray;
 }
+
+@media (max-width: 749px) {
+    .statsConteiner > h2{
+        font-size: clamp(30px, 5vw, 30px);
+    }
+    .statsNames{
+        font-size: 20px;
+    }
+}
+@media (max-width: 543px){
+    .statsNames{
+        flex-direction: column;
+        gap: 5px;
+    }
+} 
