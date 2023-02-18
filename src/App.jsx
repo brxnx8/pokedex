@@ -14,8 +14,8 @@ function App() {
 
     const [valueSearch, setValueSearch] = useState("");
 
-    const loadPokemon = async (number) => {
-        const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
+    const loadPokemon = (number) => {
+        const data = fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
             .then((response) => response.json())
             .then((pokemonData) => {
                 setPokemon({
@@ -42,7 +42,7 @@ function App() {
             .catch((erro) => {
                 console.clear();
                 setPokemon({
-                    id: number,
+                    id: isNaN(number) ? "" : parseInt(number),
                     name: "Not Found",
                     imageGif: NotFound,
                 });
@@ -84,17 +84,18 @@ function App() {
             }
         }
     }
-
-    function ChangeNumber(event) {
+    function ChangeValue(event) {
         setValueSearch(event.target.value);
-
-        if (event.target.value != "") {
-            setNumber(event.target.value);
-        } else if (!pokemon.name) {
+        if (event.target.value === "" && pokemon.imageGif === NotFound) {
             setNumber(1);
         }
-
-        if (parseInt(event.target.value) < 1) {
+    }
+    function ChangeNumber(event) {
+        event.preventDefault();
+        if (event.target["search"].value != "") {
+            setNumber(event.target["search"].value);
+        }
+        if (parseInt(event.target["search"].value) < 1) {
             setNumber(1);
         }
     }
@@ -118,15 +119,17 @@ function App() {
                 <span>{pokemon.id ? pokemon.id : ""} - </span>
                 {pokemon.name}
             </h1>
-            <div>
+            <form onSubmit={ChangeNumber}>
                 <input
                     type="search"
                     className="searchPokemon"
                     placeholder="Name or Number..."
-                    onChange={ChangeNumber}
+                    onChange={ChangeValue}
                     value={valueSearch}
+                    name="search"
                 />
-            </div>
+                <button className="ButtonSearchPokemon">Search</button>
+            </form>
             <div className="buttons">
                 <Button action="< Prev" NumberLessOrPlus={NumberLessOrPlus} />
                 <Button action="Next >" NumberLessOrPlus={NumberLessOrPlus} />
