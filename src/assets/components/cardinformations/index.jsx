@@ -1,3 +1,4 @@
+import { DivColored } from "../divColors/div.styles";
 import { Stats } from "../stats";
 import style from "./cardinformations.module.css";
 
@@ -11,19 +12,23 @@ export function CardInfo({ pokemon, classCard, ToggleClassCard }) {
     return (
         <section className={classCard} onClick={ToggleClassCard}>
             <div className={style.card}>
-                <div className={`${style.divColorCard} ${style[types[0]]}`}>
+                <DivColored 
+                    color={types[0]} 
+                    className={style.divColorCard}
+                >
                     <img src={pokemon.imageCard} alt="" />
-                </div>
+                </DivColored>
                 <div className={style.pokemonInfo}>
                     <h1>{pokemon.name}</h1>
                     <section className={style.pokemonType}>
                         {types.map((type) => (
-                            <div
+                            <DivColored
                                 key={type}
-                                className={`${style.type} ${style[type]}`}
+                                className={style.type}
+                                color={type}
                             >
                                 {type}
-                            </div>
+                            </DivColored>
                         ))}
                     </section>
                     <section className={style.pokemonMeasure}>
