@@ -49,7 +49,13 @@
     text-transform: capitalize;
 
     font-size: 60px;
-    width: 100%;
+    width: 10px;
+
+    word-spacing: nowrap;
+
+    overflow: hidden;
+
+    border-right: 1px solid white;
 }
 .pokemonMeasure,
 .pokemonType {
@@ -67,6 +73,39 @@
     padding: 0 12px 5px 10px;
 
     border-radius: 20px;
+}
+.typingAnimation{ 
+    animation: typing 2.5s steps(40) 0.5s normal both, cursor 4s steps(40) 1s normal both;
+}
+.opacity{
+    animation: opacity 0.2s steps(40) 2.5s normal both
+}
+@keyframes typing{
+    from{
+        width: 0;
+    }
+    to{
+        width: 50%;
+    }
+}
+@keyframes cursor{
+    0%{
+        border-right: 1px solid white;
+    }
+    40%{
+        border-right: 1px solid transparent;
+    }
+    100%{
+        border-right: 1px solid transparent;
+    }
+}
+@keyframes opacity{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 @media (max-width: 749px) {

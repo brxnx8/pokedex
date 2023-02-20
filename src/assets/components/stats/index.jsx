@@ -8,7 +8,7 @@ export function Stats({ pokemon }) {
     }
 
     return (
-        <section className={style.statsConteiner}>
+        <section className={`${style.statsConteiner} ${style.opacity}`}>
             <h2>Base Stats</h2>
             <section className={style.statsInfomations}>
                 {stats.map((stat) => {

@@ -19,8 +19,8 @@ export function CardInfo({ pokemon, classCard, ToggleClassCard }) {
                     <img src={pokemon.imageCard} alt="" />
                 </DivColored>
                 <div className={style.pokemonInfo}>
-                    <h1>{pokemon.name}</h1>
-                    <section className={style.pokemonType}>
+                    <h1 className={style.typingAnimation}>{pokemon.name}</h1>
+                    <section className={`${style.pokemonType} ${style.opacity}`}>
                         {types.map((type) => (
                             <DivColored
                                 key={type}
@@ -31,7 +31,7 @@ export function CardInfo({ pokemon, classCard, ToggleClassCard }) {
                             </DivColored>
                         ))}
                     </section>
-                    <section className={style.pokemonMeasure}>
+                    <section className={`${style.pokemonMeasure} ${style.opacity}`}>
                         <div>{`${pokemon.weight / 10}kg`}</div>
                         <div>{`${pokemon.height / 10}m`}</div>
                     </section>

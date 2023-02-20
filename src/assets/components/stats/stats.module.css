@@ -42,6 +42,17 @@
 
     border: 0.5px solid gray;
 }
+.opacity{
+    animation: opacity 0.2s steps(40) 2.7s normal both
+}
+@keyframes opacity{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 
 @media (max-width: 749px) {
     .statsConteiner > h2 {
